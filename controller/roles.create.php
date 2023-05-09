@@ -6,7 +6,7 @@ $rolM = new Modelo\Rol();
 
 $rolM->setNombreRol($_POST["txtRol"]);
 
-$rolM->create();
+$result= $rolM->create();
 
-echo json_encode("Rol creado");
+echo json_encode($result);
 unset($rolM);
