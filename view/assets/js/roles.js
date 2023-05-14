@@ -32,7 +32,7 @@ function read(){
                 <td>${element.nombreRol}</td>
                 <td>${element.estado}</td>
                 <td>${element.fechaCreacion}</td>
-                <td class="d-flex justify-content-around"><a onclick="readID(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" title="Editar"><i class="bi bi-box-arrow-in-down-left" ></i></a>
+                <td class="d-flex justify-content-around"><a onclick="readID(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
                 <a class="btn btn-danger" title="Eliminar"><i class="bi bi-trash"></i></a></td>
             </tr>`
             document.getElementById("tblRol").innerHTML = table
@@ -50,7 +50,24 @@ function deletes(){
 }
 
 function readID(id){
-    console.log(id)
+    data = `txtId=${id}`
+    var options = {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+    }
+    fetch("../controller/roles.readID.php",options)
+    .then(response => response.json())
+    .then((data)=>{
+        console.log(data)
+        document.getElementById('txtNombreRol').value = data[0].nombreRol
+        document.getElementById('cbEstado').value = data[0].estado
+    })
+    .catch((error)=>{
+        console.log("Error al consultar rol.")
+    })
 }
 
 window.onload = (event) => {

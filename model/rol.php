@@ -39,6 +39,17 @@ class Rol{
             return "Error: al consultar roles".$e->getMessage();
         }
     }
+    public function readID(){
+        try{
+            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE id=:id AND estado='A'");
+            $request->bindParam(":id",$this->id);
+            $request->execute();
+            $result = $request->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        }catch(PDOException $e){
+            return "Error: al consultar rol".$e->getMessage();
+        }
+    }
 
     /**
      * Get the value of id

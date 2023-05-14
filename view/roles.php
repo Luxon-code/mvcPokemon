@@ -46,15 +46,30 @@ include_once "header.php"; ?>
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModal">Modal title</h5>
+                        <h5 class="modal-title text-center" id="updateModal">Modificar Rol</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label for="txtNombreRol" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="txtNombreRol" placeholder="Nombre del rol">
+                                </div>
+                                <div class="col-6">
+                                    <label for="cbEstado" class="form-label">Estado:</label>
+                                    <select class="form-select" id="cbEstado">
+                                        <option value="">Seleccione</option>
+                                        <option value="A">Activo</option>
+                                        <option value="I">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary">Modificar</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
