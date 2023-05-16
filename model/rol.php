@@ -31,7 +31,7 @@ class Rol{
     
     public function read(){
         try {
-            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE estado='A'");
+            $request = $this->con->getCon()->prepare("SELECT * FROM roles");
             $request->execute();
             $result = $request->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
@@ -41,13 +41,25 @@ class Rol{
     }
     public function readID(){
         try{
-            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE id=:id AND estado='A'");
+            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE id=:id");
             $request->bindParam(":id",$this->id);
             $request->execute();
             $result = $request->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(PDOException $e){
             return "Error: al consultar rol".$e->getMessage();
+        }
+    }
+
+    public function statusRol(){
+        try{
+            $request = $this->con->getCon()->prepare("UPDATE roles SET estado=:estado WHERE id=:id");
+            $request->bindParam(":estado",$this->estado);
+            $request->bindParam(":id",$this->id);
+            $request->execute();
+            return "Estado Modificado";
+        }catch(PDOException $e){
+            return "Error: al cambiar estado del rol".$e->getMessage();
         }
     }
 

@@ -30,7 +30,10 @@ function read(){
             table+=`<tr>
                 <th scope="row">${index+1}</th>
                 <td>${element.nombreRol}</td>
-                <td>${element.estado}</td>
+                <td>
+                <div class="form-check form-switch">
+                <input onclick="statusRol('${element.id}','${element.estado}')" class="form-check-input" type="checkbox" role="switch" id="switch${element.nombreRol}" ${element.estado=='A'?"checked":""}>
+                <label class="form-check-label" for="switch${element.nombreRol}">${element.estado}</label></div></td>
                 <td>${element.fechaCreacion}</td>
                 <td class="d-flex justify-content-around"><a onclick="readID(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
                 <a class="btn btn-danger" title="Eliminar"><i class="bi bi-trash"></i></a></td>
@@ -72,4 +75,21 @@ function readID(id){
 
 window.onload = (event) => {
     read()
+}
+
+function statusRol(id,estado) {
+   let data = `id=${id}&estado=${estado}`
+   var options = {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+   }
+   fetch("../controller/roles.estado.php",options)
+   .then(response => response.json())
+   .then((data)=>{
+        console.log(data)
+        read()
+   })
 }
