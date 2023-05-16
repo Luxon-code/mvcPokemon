@@ -23,8 +23,8 @@ include_once "header.php"; ?>
     <div class="row mt-5 justify-content-center">
         <h2 class="text-center bg-dark text-white">Datos Roles</h2>
         <div class="col-8">
-            <table class="table">
-                <thead>
+            <table class="table table-hover">
+                <thead  class="table-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
@@ -51,24 +51,14 @@ include_once "header.php"; ?>
                     </div>
                     <div class="modal-body">
                         <form>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label for="txtNombreRol" class="form-label">Nombre:</label>
-                                    <input type="text" class="form-control" id="txtNombreRol" placeholder="Nombre del rol">
-                                </div>
-                                <div class="col-6">
-                                    <label for="cbEstado" class="form-label">Estado:</label>
-                                    <select class="form-select" id="cbEstado">
-                                        <option value="">Seleccione</option>
-                                        <option value="A">Activo</option>
-                                        <option value="I">Inactivo</option>
-                                    </select>
-                                </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="txtNombreRol" placeholder="Nombre de rol">
+                                <label for="txtNombreRol">Nombre de rol</label>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Modificar</button>
+                        <button type="button" onclick="update()" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>

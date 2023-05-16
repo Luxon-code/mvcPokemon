@@ -63,6 +63,17 @@ class Rol{
         }
     }
 
+    public function update(){
+        try{
+            $request=$this->con->getCon()->prepare("UPDATE roles SET nombreRol=:nombreRol WHERE id=:id");
+            $request->bindParam(":nombreRol",$this->nombreRol);
+            $request->bindParam(":id",$this->id);
+            $request->execute();
+            return "Rol Modificado";
+        }catch(PDOException $e){
+            return "Error: al modificar el rol".$e->getMessage();
+        }
+    }
     /**
      * Get the value of id
      */

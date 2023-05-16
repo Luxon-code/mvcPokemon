@@ -1,24 +1,38 @@
 function create(){
-    //informacion del formulario
-    var data = `txtRol=${document.getElementById("txtRol").value}`
-    //configuracion de la peticion
-    var options = {
-        method: "POST",
-        body: data,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+    if(document.getElementById("txtRol").value!=""){
+        //informacion del formulario
+        var data = `txtRol=${document.getElementById("txtRol").value}`
+        //configuracion de la peticion
+        var options = {
+            method: "POST",
+            body: data,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
         }
+        fetch("../controller/roles.create.php",options)
+        .then(response => response.json())
+        .then((data)=>{
+            console.log(data)
+            read()
+            document.getElementById("txtRol").value = ""
+            Swal.fire(
+                'Crear Rol',
+                data,
+                'success'
+            )
+
+        })
+        .catch((error)=>{
+            console.log("Error al crear rol.")
+        })
+    }else{
+        Swal.fire(
+            'Crear Rol',
+            'Ingrese el nombre del rol',
+            'warning'
+        )
     }
-    fetch("../controller/roles.create.php",options)
-    .then(response => response.json())
-    .then((data)=>{
-        console.log(data)
-        read()
-        document.getElementById("txtRol").value = ""
-    })
-    .catch((error)=>{
-        console.log("Error al crear rol.")
-    })
 }
 function read(){
     fetch("../controller/roles.read.php")
@@ -33,7 +47,7 @@ function read(){
                 <td>
                 <div class="form-check form-switch">
                 <input onclick="statusRol('${element.id}','${element.estado}')" class="form-check-input" type="checkbox" role="switch" id="switch${element.nombreRol}" ${element.estado=='A'?"checked":""}>
-                <label class="form-check-label" for="switch${element.nombreRol}">${element.estado}</label></div></td>
+                <label class="form-check-label" for="switch${element.nombreRol}">${element.estado=='A'?"Activo":"Inactivo"}</label></div></td>
                 <td>${element.fechaCreacion}</td>
                 <td class="d-flex justify-content-around"><a onclick="readID(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
                 <a class="btn btn-danger" title="Eliminar"><i class="bi bi-trash"></i></a></td>
@@ -46,7 +60,38 @@ function read(){
     })
 }
 function update(){
-
+    let nombreRol = document.getElementById("txtNombreRol").value
+    let id = localStorage.id
+    if(nombreRol != ""){
+        let data = `nombreRol=${nombreRol}&id=${id}`
+        var options = {
+            method: "POST",
+            body: data,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        }
+        fetch("../controller/roles.update.php",options)
+        .then(response => response.json())
+        .then((data)=>{
+            console.log(data)
+            read()
+            Swal.fire(
+                'Modificar Rol',
+                data,
+                'success'
+            )
+        })
+        .catch((error)=>{
+            console.log("Error al modificar rol.")
+        })
+    }else{
+        Swal.fire(
+            'Modificar Rol',
+            'Ingrese el nombre del rol',
+            'warning'
+        )
+    }
 }
 function deletes(){
 
@@ -66,7 +111,7 @@ function readID(id){
     .then((data)=>{
         console.log(data)
         document.getElementById('txtNombreRol').value = data[0].nombreRol
-        document.getElementById('cbEstado').value = data[0].estado
+        localStorage.id = data[0].id
     })
     .catch((error)=>{
         console.log("Error al consultar rol.")
