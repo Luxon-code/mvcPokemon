@@ -74,6 +74,17 @@ class Rol{
             return "Error: al modificar el rol".$e->getMessage();
         }
     }
+
+    public function delete(){
+        try{
+            $request=$this->con->getCon()->prepare("DELETE FROM roles WHERE id=:id");
+            $request->bindParam(":id",$this->id);
+            $request->execute();
+            return "Rol Eliminado";
+        }catch(PDOException $e){
+            return "Error: al eliminar el rol".$e->getMessage();
+        }
+    }
     /**
      * Get the value of id
      */

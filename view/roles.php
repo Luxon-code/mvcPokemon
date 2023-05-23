@@ -16,14 +16,14 @@ include_once "header.php"; ?>
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="d-grid gap-2">
-                <a onclick="create()" class="btn btn-primary">Crear</a>
+                <a onclick="create()" class="btn btn-primary">Crear <i class="bi bi-plus-square"></i></a>
             </div>
         </div>
     </div>
     <div class="row mt-5 justify-content-center">
         <h2 class="text-center bg-dark text-white">Datos Roles</h2>
         <div class="col-8">
-            <table class="table table-hover">
+            <table class="table table-hover" id="tableRol">
                 <thead  class="table-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -40,7 +40,6 @@ include_once "header.php"; ?>
         </div>
     </div>
     <div>
-
         <!-- Modal -->
         <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -60,6 +59,26 @@ include_once "header.php"; ?>
                     <div class="modal-footer">
                         <button type="button" onclick="update()" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="deleteModal">Eliminar Rol</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                       <h4 id="mensajeEliminar"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="deletes()" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
