@@ -14,6 +14,7 @@
     <script src="assets/js/jquery-3.7.0.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/js/loginValidate.js"></script>
     <title>MVCpokemon</title>
 </head>
 <body>
