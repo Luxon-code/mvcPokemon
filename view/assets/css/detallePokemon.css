@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+.font{
+    font-family: 'Climate Crisis', cursive;
+}
+.card-header{
+    display: flex;
+    flex-direction: row;
+}
+#contenedor{
+    background-image: url(https://lanetaneta.com/wp-content/uploads/2022/05/Los-mejores-fondos-de-pantalla-de-Pokemon-para-dispositivos-moviles.jpg);
+    background-color: rgb(235, 232, 70);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+

@@ -28,7 +28,7 @@ function create(){
 
         })
         .catch((error)=>{
-            console.log("Error al crear rol.")
+            console.log("Error al crear producto.")
         })
     }else{
         Swal.fire(

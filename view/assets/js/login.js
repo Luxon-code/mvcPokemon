@@ -6,7 +6,7 @@ function login(){
         console.log(data);
         try{
             if(data[0]['correo']){
-                location.href = "roles.php"
+                location.href = "inicio.php"
             }
         }catch{
             alert('Usuario o Password incorrectas')

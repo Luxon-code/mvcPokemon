@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+.fondo{
+    background-image: url(https://fondosmil.com/fondo/14707.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: scroll;
+}
+.fontPokemon{
+    font-family: 'Climate Crisis', cursive;
+    color: rgb(250, 141, 141);
+    border: solid 2px;
+}
+.fondoCard{
+    background-image: url(https://www.pngitem.com/pimgs/m/604-6046515_pokeball-pixel-art-png-transparent-png.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: whitesmoke;
+}
+.color{
+    color: darkslategrey;
+}
+.boton{
+    margin-top: 20px;
+}

@@ -34,9 +34,25 @@ class Producto{
             return 'Error: al crear producto'.$e->getMessage();
         }
     }
+    public function createPokemons(){
+        try{
+            $request= $this->con->getCon()->prepare('INSERT INTO productos(id,nombrePro,precioPro,cantidadPro,descripPro,estado) 
+            VALUES(:id,:nombre,:precio,:cantidad,:descripcion,:estado)');
+            $request->bindParam(':id',$this->id);
+            $request->bindParam(':nombre',$this->nombrePro);
+            $request->bindParam(':precio',$this->precioPro);
+            $request->bindParam(':cantidad',$this->cantidadPro);
+            $request->bindParam(':descripcion',$this->descripPro);
+            $request->bindParam(':estado',$this->estado);
+            $request->execute();
+            return 'Pokemon creado';
+        }catch(PDOException $e){
+            return 'Error: al crear producto'.$e->getMessage();
+        }
+    }
     public function read(){
         try {
-            $request = $this->con->getCon()->prepare("SELECT * FROM productos");
+            $request = $this->con->getCon()->prepare("SELECT * FROM productos LIMIT 30");
             $request->execute();
             $result = $request->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
