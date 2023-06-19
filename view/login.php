@@ -21,11 +21,11 @@
                 <h1 class="h3 mb-3 fw-normal text-center text-white">Iniciar Sesion</h1>
 
                 <div class="form-floating">
-                <input type="email" class="form-control" id="txtCorreo" placeholder="name@example.com">
+                <input type="email" class="form-control" id="txtCorreo" placeholder="name@example.com" style="background-color: #e8e5e5;">
                 <label for="txtCorreo">Correo Electronico</label>
                 </div>
                 <div class="form-floating">
-                <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+                <input type="password" class="form-control" id="txtPassword" placeholder="Password" style="background-color: #e8e5e5;">
                 <label for="txtPassword">Contraseña</label>
                 </div>
                 <br>
