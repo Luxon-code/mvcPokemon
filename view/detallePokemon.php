@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/css/detallePokemon.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/loginValidate.js"></script>
+    <script src="assets/js/logout.js"></script> 
     <title>Detalle Pokemon</title>
 </head>
 <body onload="getDetallePokemon(), typePokemon2(),searchPokemon()" id="contenedor">
@@ -27,6 +29,9 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="productos.php">Administrar</a>
                       </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -41,6 +41,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="roles.php">Gestionar Roles</a>
                             </li>                           
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" onclick="logout()" style="cursor: pointer;">Cerrar Sesion</a>
+                            </li>                           
                             </ul>
                             <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="txtBuscar" id="txtBuscar"  onkeyup="autoCompletPokemon()" style="width: 500px;">

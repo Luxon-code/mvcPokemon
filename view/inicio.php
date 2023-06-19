@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
         <link rel="stylesheet" href="assets/css/index.css">
         <script src="assets/js/index.js"></script>
+        <script src="assets/js/loginValidate.js"></script>
+        <script src="assets/js/logout.js"></script> 
     <title>IncioPokemon</title>
 </head>
 
