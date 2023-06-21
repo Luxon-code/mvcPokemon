@@ -114,7 +114,7 @@
                 <div class="container my-3 mt-5" id="featureContainer">
                     <div class="row mx-auto my-auto justify-content-center">
                         <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="d-flex justify-content-between position-relative top-50 px-3" style="z-index: 10000;">
+                            <div class="d-flex justify-content-between position-relative top-50 px-3" style="z-index: 1;">
                                 <a class="indicator" href="#featureCarousel" role="button" data-bs-slide="prev">
                                     <span class="fas fa-chevron-left" aria-hidden="true"></span>
                                 </a> &nbsp;&nbsp;
@@ -174,16 +174,20 @@
         <div class="row" style="height: 300px;">
             <div class="col-12 bg-danger"></div>
         </div>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-              <h5 id="offcanvasRightLabel">Productos</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              ...
-            </div>
-        </div>
     </div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex flex-column">
+        <h5 id="offcanvasRightLabel">Carrito de compras</h5>
+        <h6 id="total"></h6>
+      </div>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="list-carrito">
+
+    </div>
+    <button class="btn btn-outline-warning" onclick="finalizarCompra()">Finalizar Compra</button>
+</div> 
 </body>
 
 </html>

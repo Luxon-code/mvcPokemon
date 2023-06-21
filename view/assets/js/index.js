@@ -1,5 +1,13 @@
+let json = localStorage.getItem("carrito")
+produc = JSON.parse(json)
+const carrito = produc 
+console.log(carrito)
+if(carrito==null){
+    const carFalso = []
+    localStorage.setItem("carrito",JSON.stringify(carFalso))
+    location. reload()
+}
 const categorias = []
-    const carrito = []
     const persona = {
         nombre: "David",
         edad: 20,
@@ -297,18 +305,33 @@ function backInfoPokemon(name){
         imagen = data.sprites.other["official-artwork"].front_default
         cantidad = parseInt(document.getElementById(`cant${name}`).value)
         const poke = {
+            "id": data.id,
             "nombre": nombre,
             "precio": precio,
             "imagen": imagen,
             "cantidad": cantidad
         }
-        //let pokemon = new Pokemon(nombre,cantidad,precio,imagen)
         if(cantidad == 0){
             alert("Ingrese la cantidad que desea comprar")
         }else{
-            carrito.push(poke)
-            localStorage.setItem("carrito",carrito)
+            if(carrito.length>0){
+                let existe = false
+                carrito.forEach(element => {
+                    if(element.id == poke.id){
+                        alert("ya esta en el carrito")
+                        existe=true
+                    }else{
+                        existe=false
+                    }
+                });
+                if(existe==false){
+                    carrito.push(poke)
+                    localStorage.setItem("carrito",JSON.stringify(carrito))
+                }
+            }else{
+                carrito.push(poke)
+                localStorage.setItem("carrito",JSON.stringify(carrito))
+            }
         }
     }))
-    //nombrePokemon,precio = base_experinecia*100,imagen
 }
