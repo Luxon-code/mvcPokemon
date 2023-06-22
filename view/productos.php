@@ -135,7 +135,7 @@ include_once "header.php"; ?>
       </div>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body" id="list-carrito">
+    <div class="offcanvas-body" id="list-car">
 
     </div>
     <button class="btn btn-outline-warning" onclick="finalizarCompra()">Finalizar Compra</button>

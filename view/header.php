@@ -19,7 +19,7 @@
     <script src="assets/js/index.js"></script>   
     <title>MVCpokemon</title>
 </head>
-<body onload="searchPokemon()" class="fondo">
+<body onload="searchPokemon(),listarCarrito()" class="fondo">
     <div class="container-fluid">
        <div class="row" style="margin-bottom: 4rem;">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">

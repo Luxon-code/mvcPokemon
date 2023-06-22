@@ -9,12 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/tipos.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/loginValidate.js"></script>
     <script src="assets/js/logout.js"></script> 
     <title id="tituloBarra">Tipos Pokemon</title>
 </head>
-<body onload="PrintPokemon(),typePokemon2(),searchPokemon()" class="fondo">
+<body onload="PrintPokemon(),typePokemon2(),searchPokemon(),listarCarrito()" class="fondo">
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
@@ -61,8 +62,7 @@
         </div>
         <div class="row justify-content-center " id="listaPokemones" style="overflow: auto;">
         </div>
-    </div>
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <div class="d-flex flex-column">
         <h5 id="offcanvasRightLabel">Carrito de compras</h5>
@@ -70,10 +70,11 @@
       </div>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body" id="list-carrito">
+    <div class="offcanvas-body" id="list-car">
 
     </div>
     <button class="btn btn-outline-warning" onclick="finalizarCompra()">Finalizar Compra</button>
 </div> 
+    </div>
 </body>
 </html>

@@ -12,6 +12,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="assets/css/index.css">
         <script src="assets/js/index.js"></script>
         <script src="assets/js/loginValidate.js"></script>
@@ -19,7 +20,7 @@
     <title>IncioPokemon</title>
 </head>
 
-<body onload="typePokemon(),searchPokemon()">
+<body onload="typePokemon(),searchPokemon(),listarCarrito()">
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
@@ -183,7 +184,7 @@
       </div>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body" id="list-carrito">
+    <div class="offcanvas-body" id="list-car">
 
     </div>
     <button class="btn btn-outline-warning" onclick="finalizarCompra()">Finalizar Compra</button>

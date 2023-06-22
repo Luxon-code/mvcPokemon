@@ -243,7 +243,7 @@ function PrintPokemon(){
                   <span id="peso${element.pokemon.name}" class="card-text fw-bold color"></span>
                   <br>
                   <div class="d-flex justify-content-around">
-                    <button type="button" class="btn btn-outline-danger boton">Agregar al carrito</button>
+                    <button type="button" class="btn btn-outline-danger boton" onclick="AgregarCarrito('${element.pokemon.name}')">Agregar al carrito</button>
                     <input type="number" id="cant${element.pokemon.name}" value="0" placeholder="Cantidad" class="btn btn-outline-danger" style="width: 47%;
                     height: 37px;
                     top: 20px;
@@ -320,6 +320,7 @@ function backInfoPokemon(name){
                     if(element.id == poke.id){
                         alert("ya esta en el carrito")
                         existe=true
+                        document.getElementById(`cant${name}`).value = 0
                     }else{
                         existe=false
                     }
@@ -327,6 +328,13 @@ function backInfoPokemon(name){
                 if(existe==false){
                     carrito.push(poke)
                     localStorage.setItem("carrito",JSON.stringify(carrito))
+                    document.getElementById(`cant${name}`).value = 0
+                    listarCarrito()
+                    Swal.fire(
+                        'Carrito',
+                        'Producto agregado',
+                        'success'
+                    )
                 }
             }else{
                 carrito.push(poke)
@@ -334,4 +342,95 @@ function backInfoPokemon(name){
             }
         }
     }))
+}
+function AgregarCarrito(name){
+    fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then((response) => response.json())
+    .then((data => {
+        nombre = data.name
+        precio = data.base_experience*100
+        imagen = data.sprites.other["official-artwork"].front_default
+        cantidad = parseInt(document.getElementById(`cant${name}`).value)
+        const poke = {
+            "id": data.id,
+            "nombre": nombre,
+            "precio": precio,
+            "imagen": imagen,
+            "cantidad": cantidad
+        }
+        if(cantidad == 0){
+            alert("Ingrese la cantidad que desea comprar")
+        }else{
+            if(carrito.length>0){
+                let existe = false
+                carrito.forEach(element => {
+                    if(element.id == poke.id){
+                        alert("ya esta en el carrito")
+                        existe=true
+                        document.getElementById(`cant${name}`).value = 0
+                    }else{
+                        existe=false
+                    }
+                });
+                if(existe==false){
+                    carrito.push(poke)
+                    localStorage.setItem("carrito",JSON.stringify(carrito))
+                    listarCarrito()
+                    document.getElementById(`cant${name}`).value = 0
+                    Swal.fire(
+                        'Carrito',
+                        'Producto agregado',
+                        'success'
+                    )
+                }
+            }else{
+                carrito.push(poke)
+                localStorage.setItem("carrito",JSON.stringify(carrito))
+            }
+        }
+    }))
+}
+function listarCarrito(){
+    let json = localStorage.getItem("carrito")
+    productos = JSON.parse(json)
+    console.log(productos)
+    let car = ""
+    productos.forEach((element,i) => {
+        car += `<div class="card border-warning mb-3" style="max-width: 540px; border-bottom-left-radius: 9.25rem!important;
+        border-top-left-radius: 10.25rem!important;">
+        <div class="row g-0">
+          <div class="col-md-4" style="display: flex;">
+            <img src="${element.imagen}" class="img-fluid rounded-start" alt="..." style="border-bottom-left-radius: 9.25rem!important;
+            border-top-left-radius: 10.25rem!important;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div style="margin-bottom: -28px;">
+                <h5 class="card-title">${element.nombre}</h5>
+                <button type="button" onclick="eliminarDelCarrito(${i})" class="btn-close" style="position: relative;
+                top: -48px;
+                left: 197px;"></button>
+              </div>
+              <p style="margin-bottom: 0rem;"><b>Precio: </b>$ ${element.precio}</p>
+              <p style="margin-bottom: 0rem;"><b>Cantidad: </b>${element.cantidad}</p>
+              <p style="margin-bottom: 0rem;"><b>Total: </b>$ ${element.cantidad*element.precio}</p>
+            </div>
+          </div>
+        </div>
+      </div>`
+    });
+    document.getElementById("list-car").innerHTML = car
+    total()
+}
+function eliminarDelCarrito(i){
+      carrito.splice(i, 1)
+      localStorage.setItem("carrito",JSON.stringify(carrito))
+      listarCarrito()
+}
+function total(){
+    let total = 0
+    carrito.forEach(element => {
+      total += element.cantidad*element.precio
+    });
+    document.getElementById('total').innerHTML = `Total de la compra: ${total}`
 }
