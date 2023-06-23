@@ -13,6 +13,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/loginValidate.js"></script>
     <script src="assets/js/logout.js"></script> 
+    <script src="assets/js/pedidos.js"></script>
     <title>Detalle Pokemon</title>
 </head>
 <body onload="getDetallePokemon(), typePokemon2(),searchPokemon(),listarCarrito()" id="contenedor">
@@ -71,8 +72,47 @@
     <div class="offcanvas-body" id="list-car">
 
     </div>
-    <button class="btn btn-outline-warning" onclick="finalizarCompra()">Finalizar Compra</button>
-</div> 
+    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finalizar Compra</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Datos del pedido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="txtNombre" placeholder="Nombre del Producto">
+              <label for="txtNombre">Nombre</label>
+          </div>
+          <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="txtDireccion" placeholder="Nombre del Producto">
+              <label for="txtDireccion">Direccion</label>
+          </div>
+          <div class="form-floating mb-2">
+              <input type="number" class="form-control" id="txtTelefono" placeholder="Nombre del Producto">
+              <label for="txtTelefono">Telefono</label>
+          </div>
+          <div class="form-floating">
+              <select class="form-select" id="cbFormaPago" aria-label="Floating label select example">
+                <option value="Transferencia">Transferencia</option>
+                <option value="ContraEntrega">ContraEntrega</option>
+                <option value="Consignacion">Consignacion</option>
+              </select>
+              <label for="cbFormaPago">Forma de pago</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="hacerPedidio()">Finalizar Pedido</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </body>
 </html>

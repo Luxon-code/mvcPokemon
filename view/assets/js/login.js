@@ -7,9 +7,10 @@ function login(){
         try{
             if(data[0]['correo']){
                 location.href = "inicio.php"
+                localStorage.idUsuario = data[0]['id']
             }
         }catch{
             alert('Usuario o Password incorrectas')
         }
     })
-}
+} 

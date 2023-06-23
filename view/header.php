@@ -48,7 +48,6 @@
                             <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="txtBuscar" id="txtBuscar"  onkeyup="autoCompletPokemon()" style="width: 500px;">
                             <div id="listPokemon"></div>
-                            <button class="btn btn-outline-success" type="button" id="cartPokemon" ondrop="drop(event)" ondragover="allowDrop(event)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"><i class="bi bi-cart4"></i></button>
                             </form>
                         </div>
                         </div>

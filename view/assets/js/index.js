@@ -433,4 +433,5 @@ function total(){
       total += element.cantidad*element.precio
     });
     document.getElementById('total').innerHTML = `Total de la compra: ${total}`
+    localStorage.totalCarrito = total
 }
